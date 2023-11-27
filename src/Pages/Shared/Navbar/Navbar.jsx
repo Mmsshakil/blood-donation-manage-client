@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import logo from '../../../assets/logoOut.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
@@ -9,10 +10,31 @@ const Navbar = () => {
 
 
     const handleLogout = () => {
-        logOut()
-            .then(result => {
-                console.log('logout sucess');
-            })
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to logout!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                logOut()
+                    .then(result => {
+                        console.log('logout sucess', result);
+
+                    })
+
+                Swal.fire({
+                    title: "Done!",
+                    text: "Logout Successful",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     const navOptions = <>
@@ -56,7 +78,7 @@ const Navbar = () => {
                         user ? <>
                             <button onClick={handleLogout} className="btn">Log Out</button>
                         </> : <>
-                            <NavLink><button className="btn">Login</button></NavLink>
+                            <NavLink to='/login'><button className="btn">Login</button></NavLink>
                         </>
                     }
                 </div>
