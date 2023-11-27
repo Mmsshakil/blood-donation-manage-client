@@ -1,27 +1,13 @@
-import { useEffect, useState } from "react";
+
 import { useForm } from "react-hook-form";
+import useDistrict from "../../hooks/useDistrict";
+import useUpazila from "../../hooks/useUpazila";
 
 const SearchDonor = () => {
 
-    const [districts, setDistricts] = useState([]);
-    const [upazilas, setUpazilas] = useState([]);
+    const [districts] = useDistrict();
+    const [upazilas] = useUpazila();
 
-    useEffect(() => {
-        fetch('districs.json')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setDistricts(data);
-            })
-    }, [])
-
-    useEffect(() => {
-        fetch('upazilas.json')
-            .then(res => res.json())
-            .then(data => {
-                setUpazilas(data);
-            })
-    }, [])
 
 
     const { register, handleSubmit } = useForm();
@@ -85,12 +71,12 @@ const SearchDonor = () => {
                 {/* Email */}
                 <div className="flex items-center gap-3">
                     <h1 className="text-xl font-bold ">Email: </h1>
-                    <input {...register("email")} className="w-full p-3 rounded-md bg-gray-900" placeholder="Enter your mail" type="email" name="" id=""  required/>
+                    <input {...register("email")} className="w-full p-3 rounded-md bg-gray-900" placeholder="Enter your mail" type="email" name="" id="" required />
                 </div>
 
                 <button className="btn">
-                        Add Item 
-                    </button>
+                    Add Item
+                </button>
             </form>
         </div>
     );
