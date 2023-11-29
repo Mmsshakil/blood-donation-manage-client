@@ -45,7 +45,7 @@ const Profile = () => {
                     <p>Blood Group: {blodGroup}</p>
                     <p>Address: {upazila} , {district}</p>
                 </div>
-                <NavLink to={`/dashboard/updateProfile/${_id}`} className="btn">Update</NavLink>
+                <NavLink to={`/dashboard/updateProfile/${_id}`} className="btn btn-outline btn-info">Update</NavLink>
                 {/* <NavLink to='/dashboard/updateProfile' className="btn">Update</NavLink> */}
             </div>
         </div>

@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-col md:flex-row md:mt-10">
-            <div className="w-auto p-0 lg:p-6 min-h-screen bg-slate-800 ">
+            <div className="w-auto p-0 lg:p-6 min-h-full lg:min-h-screen bg-slate-800 ">
                 <ul className="menu space-y-5">
                     <li className="font-bold"><NavLink to='/'><IoHome className="text-2xl"></IoHome>Home</NavLink></li>
                     <li className="font-bold"><NavLink to='/dashboard/profile'><IoPerson className="text-2xl"></IoPerson>Profile</NavLink></li>
