@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,12 @@ export const router = createBrowserRouter([
             {
                 path: 'updateProfile/:id',
                 element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+            },
+
+            // admin routes
+            {
+                path: 'allUsers',
+                element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
             }
         ]
     }
