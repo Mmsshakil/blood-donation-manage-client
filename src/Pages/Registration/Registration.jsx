@@ -79,7 +79,9 @@ const Registration = () => {
                                 district: data.district,
                                 upazila: data.upazila,
                                 password: data.password,
-                                photoURL: imageUrl
+                                photoURL: imageUrl,
+                                role: 'donor',
+                                status: 'active'
                             }
 
                             axiosPublic.post('/users', userInfo)

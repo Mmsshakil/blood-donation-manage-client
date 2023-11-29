@@ -2,13 +2,16 @@
 import { useForm } from "react-hook-form";
 import useDistrict from "../../hooks/useDistrict";
 import useUpazila from "../../hooks/useUpazila";
+// import { useContext } from "react";
+// import { AuthContext } from "../../providers/AuthProvider";
 
 const SearchDonor = () => {
 
     const [districts] = useDistrict();
     const [upazilas] = useUpazila();
 
-
+    // const { user } = useContext(AuthContext);
+    // console.log(user);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {

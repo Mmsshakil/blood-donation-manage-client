@@ -39,12 +39,15 @@ const AuthProvider = ({ children }) => {
         }
     },[])
 
+    // console.log(user);
+
     const authInfo = {
         user,
         loading,
         createUser,
         signIn,
-        logOut
+        logOut,
+        setLoading
     }
 
     return (
