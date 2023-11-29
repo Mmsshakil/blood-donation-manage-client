@@ -7,7 +7,7 @@ const useDistrict = () => {
 
 
     useEffect(() => {
-        fetch('districs.json')
+        fetch('http://localhost:5000/districts')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

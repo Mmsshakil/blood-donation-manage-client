@@ -6,7 +6,7 @@ const useUpazila = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('upazilas.json')
+        fetch('http://localhost:5000/upazilas')
             .then(res => res.json())
             .then(data => {
                 setUpazilas(data);

@@ -13,6 +13,7 @@ const Registration = () => {
 
     const [districts] = useDistrict();
     const [upazilas] = useUpazila();
+    console.log(districts);
     const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
