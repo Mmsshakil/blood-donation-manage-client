@@ -11,6 +11,8 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import MyDonationRequests from "../Pages/Dashboard/MyDonationRequests/MyDonationRequests";
+import CreateDonationRequest from "../Pages/Dashboard/CreateDonationRequest/CreateDonationRequest";
 
 export const router = createBrowserRouter([
     {
@@ -37,7 +39,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: 'profile',
@@ -52,6 +54,16 @@ export const router = createBrowserRouter([
             {
                 path: 'allUsers',
                 element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+            },
+
+            // donor
+            {
+                path: 'myDonationRequests',
+                element: <MyDonationRequests></MyDonationRequests>
+            },
+            {
+                path: 'createDonationRequest',
+                element: <CreateDonationRequest></CreateDonationRequest>
             }
         ]
     }

@@ -28,7 +28,7 @@ const Profile = () => {
     }
     //---------------------------------------------------------------------------------
 
-    console.log(userData);
+    // console.log(userData);
     const { name, email, blodGroup, upazila, district, _id } = userData;
 
     return (
