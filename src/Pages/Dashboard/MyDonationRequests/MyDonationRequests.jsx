@@ -2,6 +2,7 @@
 import Swal from "sweetalert2";
 import useRequest from "../../../hooks/useRequest";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { NavLink } from "react-router-dom";
 
 const MyDonationRequests = () => {
 
@@ -24,7 +25,6 @@ const MyDonationRequests = () => {
     }
 
     // const { recipientName, fullAddress, upazila, district, date, time, donationStatus } = requests;
-
     // -----------------------------------------------------------
 
     // delete donation request
@@ -86,7 +86,7 @@ const MyDonationRequests = () => {
                             <td>{request.donationStatus}</td>
                             <td>donar info</td>
                             <td>
-                                <button className="btn">Edit</button>
+                                <NavLink to={`/dashboard/updateDonationRequest/${request._id}`}><button className="btn">Edit</button></NavLink>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(request._id)} className="btn">Delete</button>
