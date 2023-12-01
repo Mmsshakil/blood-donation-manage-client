@@ -13,6 +13,7 @@ import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import MyDonationRequests from "../Pages/Dashboard/MyDonationRequests/MyDonationRequests";
 import CreateDonationRequest from "../Pages/Dashboard/CreateDonationRequest/CreateDonationRequest";
+import AllDonationRequests from "../Pages/Dashboard/AllDonationsRequests/AllDonationRequests";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allUsers',
                 element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+            },
+            {
+                path: 'allDonationRequests',
+                element: <AllDonationRequests></AllDonationRequests>
             },
 
             // donor

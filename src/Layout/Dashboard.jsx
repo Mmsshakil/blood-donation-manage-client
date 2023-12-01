@@ -49,7 +49,7 @@ const Dashboard = () => {
                             {/* admin */}
                             <li className="font-bold"><NavLink to='/dashboard/allUsers'><IoPeople className="text-2xl"></IoPeople>All Users</NavLink></li>
                             {/* admin + volunter */}
-                            <li className="font-bold"><NavLink to='/dashboard/all-blood-donation-request'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
+                            <li className="font-bold"><NavLink to='/dashboard/allDonationRequests'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
                             <li className="font-bold"><NavLink to='/dashboard/content-management'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
                         </> : <>
 

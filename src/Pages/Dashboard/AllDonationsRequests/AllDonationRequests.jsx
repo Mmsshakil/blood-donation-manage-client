@@ -1,12 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-import useRequest from "../../../hooks/useRequest";
+const AllDonationRequests = () => {
 
-const MyDonationRequests = () => {
+    const axiosSecure = useAxiosSecure();
 
-    const [myRequest, refetch, isPending, error] = useRequest();
-    console.log(myRequest);
-
-    // ----------------get all donation requests from one user------------------
+    // ----------------get all donation requests------------------
+    const { isPending, error, data: requests = [], refetch } = useQuery({
+        queryKey: ['requests'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/requests');
+            return res.data;
+        }
+    })
 
     if (isPending) {
         return <div className="flex justify-center items-center h-[60vh]">
@@ -19,10 +25,8 @@ const MyDonationRequests = () => {
             <span className="loading loading-bars loading-lg text-error"></span>
         </div>
     }
-
-    // const { recipientName, fullAddress, upazila, district, date, time, donationStatus } = requests;
-
-    // ----------------------------------------------------------------------------
+    console.log(requests);
+    // -------------------------------------------------------------
 
 
     return (
@@ -46,7 +50,7 @@ const MyDonationRequests = () => {
 
                 <tbody>
                     {
-                        myRequest.map((request, index) => <tr key={request._id}>
+                        requests.map((request, index) => <tr key={request._id}>
                             <th>{index + 1}</th>
                             <td>{request.recipientName}</td>
                             <td>{request.upazila}, {request.district}</td>
@@ -73,4 +77,4 @@ const MyDonationRequests = () => {
     );
 };
 
-export default MyDonationRequests;
+export default AllDonationRequests;
