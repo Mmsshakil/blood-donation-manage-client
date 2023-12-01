@@ -1,10 +1,13 @@
 
+import Swal from "sweetalert2";
 import useRequest from "../../../hooks/useRequest";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyDonationRequests = () => {
 
     const [myRequest, refetch, isPending, error] = useRequest();
     console.log(myRequest);
+    const axiosSecure = useAxiosSecure();
 
     // ----------------get all donation requests from one user------------------
 
@@ -22,7 +25,35 @@ const MyDonationRequests = () => {
 
     // const { recipientName, fullAddress, upazila, district, date, time, donationStatus } = requests;
 
-    // ----------------------------------------------------------------------------
+    // -----------------------------------------------------------
+
+    // delete donation request
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/myRequest/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your request has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
 
 
     return (
@@ -58,7 +89,7 @@ const MyDonationRequests = () => {
                                 <button className="btn">Edit</button>
                             </td>
                             <td>
-                                <button className="btn">Delete</button>
+                                <button onClick={() => handleDelete(request._id)} className="btn">Delete</button>
                             </td>
                             <td>
                                 <button className="btn">View</button>
