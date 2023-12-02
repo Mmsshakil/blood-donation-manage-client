@@ -37,26 +37,43 @@ const Dashboard = () => {
     // const isAdmin = true;
 
     return (
-        <div className="flex flex-col md:flex-row md:mt-10">
+        <div className="flex flex-col md:flex-row ">
             <div className="w-auto p-0 lg:p-6 min-h-full lg:min-h-screen bg-slate-800 ">
                 <ul className="menu space-y-5">
                     <li className="font-bold"><NavLink to='/'><IoHome className="text-2xl"></IoHome>Home</NavLink></li>
                     <li className="font-bold"><NavLink to='/dashboard/profile'><IoPerson className="text-2xl"></IoPerson>Profile</NavLink></li>
                     <div className="divider divider-info"></div>
 
+
+
+
+                    {/* admin  */}
                     {
-                        userData?.role === 'admin'  ? <>
-                            {/* admin */}
+                        userData?.role === 'admin' && <>
+
                             <li className="font-bold"><NavLink to='/dashboard/allUsers'><IoPeople className="text-2xl"></IoPeople>All Users</NavLink></li>
-                            {/* admin + volunter */}
                             <li className="font-bold"><NavLink to='/dashboard/allDonationRequests'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
                             <li className="font-bold"><NavLink to='/dashboard/content-management'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
-                        </> : <>
+                        </>
+                    }
 
-                            {/* Donor */}
+
+
+                    {/* donor */}
+                    {
+                        userData?.role === 'donor' && <>
+
                             <li className="font-bold"><NavLink to='/dashboard/myDonationRequests'><MdOutlineManageAccounts className="text-2xl"></MdOutlineManageAccounts>My Donation Requests</NavLink></li>
                             <li className="font-bold"><NavLink to='/dashboard/createDonationRequest'><MdBloodtype className="text-2xl"></MdBloodtype>Create Donation Request</NavLink></li>
+                        </>
+                    }
 
+                    {/* volunteer */}
+                    {
+                        userData?.role === 'volunteer' && <>
+
+                            <li className="font-bold"><NavLink to='/dashboard/allDonationRequests'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
+                            <li className="font-bold"><NavLink to='/dashboard/content-management'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
                         </>
                     }
 
@@ -65,7 +82,7 @@ const Dashboard = () => {
 
                 </ul>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 mt-5 md:mt-10">
                 <Outlet></Outlet>
             </div>
 

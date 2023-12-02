@@ -38,7 +38,7 @@ const Navbar = () => {
     }
 
     const navOptions = <>
-        <li><NavLink>Donation Requests</NavLink></li>
+        <li><NavLink to='/donationRequests'>Donation Requests</NavLink></li>
         <li><NavLink>Blog</NavLink></li>
         {
             user ? <>

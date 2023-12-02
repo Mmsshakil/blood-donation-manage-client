@@ -183,7 +183,7 @@ const UpdateProfile = () => {
                         </div>
 
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Register" />
+                            <input className="btn btn-primary" type="submit" value="Update Profile" />
                         </div>
                     </form>
                 </div>

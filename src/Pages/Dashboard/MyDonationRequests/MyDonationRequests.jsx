@@ -84,15 +84,15 @@ const MyDonationRequests = () => {
                             <td>{request.date}</td>
                             <td>{request.time}</td>
                             <td>{request.donationStatus}</td>
-                            <td>donar info</td>
+                            <td>{request.donarName} <br /> {request.donarEmail}</td>
                             <td>
-                                <NavLink to={`/dashboard/updateDonationRequest/${request._id}`}><button className="btn">Edit</button></NavLink>
+                                <NavLink to={`/dashboard/updateDonationRequest/${request._id}`}><button className="btn btn-outline btn-warning">Edit</button></NavLink>
                             </td>
                             <td>
-                                <button onClick={() => handleDelete(request._id)} className="btn">Delete</button>
+                                <button onClick={() => handleDelete(request._id)} className="btn btn-outline btn-error">Delete</button>
                             </td>
                             <td>
-                                <button className="btn">View</button>
+                                <NavLink to={`/dashboard/viewDonationDetails/${request._id}`}><button className="btn btn-outline btn-info">View</button></NavLink>
                             </td>
                         </tr>
                         )

@@ -31,7 +31,7 @@ const UpdateDonationRequest = () => {
             district: data.district,
             upazila: data.upazila,
             fullAddress: data.fullAddress,
-            date: data.fullAddress,
+            date: data.date,
             time: data.time,
             requestMessage: data.requestMessage
         }
@@ -133,7 +133,7 @@ const UpdateDonationRequest = () => {
                 <input {...register("requestMessage")} type="text" placeholder="Request Message" defaultValue={requestMessage} className="input input-bordered w-full mb-4" required />
 
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary" >Update</button>
+                    <button className="btn btn-primary" >Update Request</button>
                 </div>
             </form>
         </div>

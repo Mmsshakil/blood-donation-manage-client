@@ -13,7 +13,9 @@ const Banner = () => {
                         <p className="mb-5 text-white">Blood donation saves lives by providing a vital lifeline for those in need, embodying the simple yet profound act of compassion and generosity.</p>
                     </div>
                     <div className="flex gap-3 justify-center items-center">
-                        <button className=" border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">Join as a donor</button>
+                        <NavLink to='/registration' >
+                            <button className=" border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">Join as a donor</button>
+                        </NavLink>
                         <NavLink to='/searchDonor' >
                             <button className=" border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">Search Donors</button>
                         </NavLink>
