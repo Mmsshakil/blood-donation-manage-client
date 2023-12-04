@@ -19,8 +19,6 @@ const AddBlog = ({ placeholder }) => {
 
 
 
-
-
     const imgBBKey = import.meta.env.VITE_IMGBB_KEY;
     const img_hosting_api = `https://api.imgbb.com/1/upload?key=${imgBBKey}`;
 
