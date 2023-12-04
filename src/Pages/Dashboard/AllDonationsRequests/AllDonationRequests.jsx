@@ -18,7 +18,7 @@ const AllDonationRequests = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -169,7 +169,7 @@ const AllDonationRequests = () => {
                                 request?.donationStatus === "inprogress" ? <>
                                     <td>{request.donarName} <br /> {request.donarEmail}</td>
                                 </> : <>
-                                    <td>. . . . .</td>
+                                    <td>. . . . . </td>
                                 </>
                             }
 

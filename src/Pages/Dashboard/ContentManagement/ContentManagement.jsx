@@ -11,6 +11,8 @@ const ContentManagement = () => {
 
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const published = "published";
+    const draft = "draft";
 
 
 
@@ -65,6 +67,32 @@ const ContentManagement = () => {
     }
 
 
+    // update the status
+    const handlePublishStatus = (id, status) => {
+        console.log(id, status);
+
+        const updateInfo = {
+            blogStatus: status
+        }
+
+        axiosSecure.put(`/blogStatusUpdate/${id}`, updateInfo)
+            .then(res => {
+                console.log('blog status updated to the data base', res);
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Blog ${status} successfull`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            })
+    }
+
+
 
     return (
         <div className="flex flex-col gap-5  px-5">
@@ -81,8 +109,15 @@ const ContentManagement = () => {
                         <div className="card-body">
                             <h2 className="card-title mx-auto">{blog.title}</h2>
                             <div className="card-actions justify-center">
-                                <button className="btn btn-primary">Publish</button>
-                                <button onClick={() => handleDelete(blog._id)} className="btn btn-primary">Delete</button>
+                                {
+                                    blog?.blogStatus === 'published' ? <>
+                                        <button onClick={() => handlePublishStatus(blog._id, draft)} className="btn btn-primary">Unpublish</button>
+                                    </> : <>
+                                        <button onClick={() => handlePublishStatus(blog._id, published)} className="btn btn-primary">Publish</button>
+                                    </>
+                                }
+
+                                <button onClick={() => handleDelete(blog._id, draft)} className="btn btn-primary">Delete</button>
                             </div>
                         </div>
                     </div>)
