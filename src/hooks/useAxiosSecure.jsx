@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://blood-donor-manage-server.vercel.app'
 })
 
 const useAxiosSecure = () => {

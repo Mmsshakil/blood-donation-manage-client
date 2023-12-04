@@ -74,8 +74,8 @@ const AddBlog = ({ placeholder }) => {
     return (
         <div className="hero ">
             <div className="w-full rounded-md shadow-2xl bg-base-100">
-
-                <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
+                <div className="divider divider-info">Add Blog Form</div>
+                <form className="px-5" onSubmit={handleSubmit(onSubmit)}>
                     {/* title */}
                     <div className="form-control">
                         <label className="label">

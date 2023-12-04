@@ -21,7 +21,7 @@ const ContentManagement = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -121,6 +121,7 @@ const ContentManagement = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-8 lg:gap-14">
                 {
                     blogs?.map(blog => <div
+                        data-aos="zoom-out-left"
                         key={blog._id}
                         className="card card-compact w-80 bg-base-100 shadow-xl">
                         <figure><img className="h-56 w-full" src={blog.image} alt="Shoes" /></figure>

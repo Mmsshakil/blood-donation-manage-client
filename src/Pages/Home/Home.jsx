@@ -1,12 +1,13 @@
 import Banner from "./Banner/Banner";
 import Contact from "./Contact/Contact";
+import Feature from "./Feature/Feature";
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <h2>this is home</h2>
+            <Feature></Feature>
             <Contact></Contact>
            
         </div>
