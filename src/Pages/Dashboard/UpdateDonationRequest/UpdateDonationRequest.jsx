@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useDistrict from "../../../hooks/useDistrict";
 import useUpazila from "../../../hooks/useUpazila";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
@@ -16,6 +16,8 @@ const UpdateDonationRequest = () => {
     const [upazilas] = useUpazila();
     const axiosPublic = useAxiosPublic();
     const requestDetails = useLoaderData();
+    const navigate = useNavigate();
+    const location = useLocation();
     // console.log(requestDetails);
     const { _id, recipientName, hospitalName, fullAddress, upazila, district, date, time, requestMessage } = requestDetails;
 
@@ -49,6 +51,7 @@ const UpdateDonationRequest = () => {
                         timer: 1500
                     });
                     // window.location.reload();
+                    navigate(location?.state ? location.state : '/dashboard');
                 }
             })
     };

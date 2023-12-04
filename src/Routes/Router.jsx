@@ -17,6 +17,9 @@ import AllDonationRequests from "../Pages/Dashboard/AllDonationsRequests/AllDona
 import UpdateDonationRequest from "../Pages/Dashboard/UpdateDonationRequest/UpdateDonationRequest";
 import ViewDonationDetails from "../Pages/Dashboard/ViewDonationDetails/ViewDonationDetails";
 import DonationRequests from "../Pages/Dashboard/DonationRequests/DonationRequests";
+import Welcome from "../Pages/Dashboard/Welcome/Welcome";
+import ContentManagement from "../Pages/Dashboard/ContentManagement/ContentManagement";
+import AddBlog from "../Pages/Dashboard/AddBlog/AddBlog";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +57,10 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
+                path: 'welcome',
+                element: <Welcome></Welcome>
+            },
+            {
                 path: 'updateProfile/:id',
                 element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
             },
@@ -70,12 +77,20 @@ export const router = createBrowserRouter([
             {
                 path: 'updateDonationRequest/:id',
                 element: <UpdateDonationRequest></UpdateDonationRequest>,
-                loader: ({ params }) => fetch(`http://localhost:5000/requests/${params.id}`)
+                loader: ({ params }) => fetch(`https://blood-donor-manage-server.vercel.app/requests/${params.id}`)
             },
             {
                 path: 'viewDonationDetails/:id',
                 element: <ViewDonationDetails></ViewDonationDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/requests/${params.id}`)
+                loader: ({ params }) => fetch(`https://blood-donor-manage-server.vercel.app/requests/${params.id}`)
+            },
+            {
+                path: 'contentManagement',
+                element: <ContentManagement></ContentManagement>
+            },
+            {
+                path: 'addBlog',
+                element: <AddBlog></AddBlog>
             },
 
             // donor

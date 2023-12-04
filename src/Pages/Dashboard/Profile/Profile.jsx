@@ -11,7 +11,7 @@ const Profile = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

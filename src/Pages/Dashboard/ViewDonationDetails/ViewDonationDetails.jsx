@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
@@ -8,6 +8,8 @@ const ViewDonationDetails = () => {
     const { user } = useContext(AuthContext);
     const requestDetails = useLoaderData();
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
+    const location = useLocation();
     // console.log(requestDetails);
     const { _id, requesterName, requesterEmail, recipientName, hospitalName, fullAddress, upazila, district, date, time, requestMessage, donationStatus, donarName, donarEmail } = requestDetails;
 
@@ -40,6 +42,7 @@ const ViewDonationDetails = () => {
                                 icon: "success"
                             });
                             // window.location.reload();
+                            navigate(location?.state ? location.state : '/dashboard/profile');
                         }
                     })
 
@@ -58,7 +61,7 @@ const ViewDonationDetails = () => {
                     <p><span className="font-bold">Email : </span>{requesterEmail}</p>
                     {/* donar details */}
                     {
-                        requestDetails?.donarName ? <>
+                        requestDetails?.donationStatus === 'inprogress' || requestDetails?.donationStatus === 'done' ? <>
                             <h1 className="text-lg font-bold mb-5">Donar Details -</h1>
                             <p><span className="font-bold">Name : </span>{donarName}</p>
                             <p><span className="font-bold">Email : </span>{donarEmail}</p>
@@ -80,7 +83,7 @@ const ViewDonationDetails = () => {
             </div>
 
             {
-                requestDetails?.donationStatus === 'inprogress' ? <>
+                 requestDetails?.donationStatus === 'done' ? <>
                     <button onClick={handleBloodDonate} className="btn btn-wide my-5 btn-outline btn-success" disabled>Donate</button>
                 </> : <>
                     <button onClick={handleBloodDonate} className="btn btn-wide my-5 btn-outline btn-success">Donate</button>

@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
                             <li className="font-bold"><NavLink to='/dashboard/allUsers'><IoPeople className="text-2xl"></IoPeople>All Users</NavLink></li>
                             <li className="font-bold"><NavLink to='/dashboard/allDonationRequests'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
-                            <li className="font-bold"><NavLink to='/dashboard/content-management'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
+                            <li className="font-bold"><NavLink to='/dashboard/contentManagement'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
                         </>
                     }
 
@@ -73,7 +73,7 @@ const Dashboard = () => {
                         userData?.role === 'volunteer' && <>
 
                             <li className="font-bold"><NavLink to='/dashboard/allDonationRequests'><FaHandshakeSimple className="text-2xl"></FaHandshakeSimple>All Blood Donation Request</NavLink></li>
-                            <li className="font-bold"><NavLink to='/dashboard/content-management'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
+                            <li className="font-bold"><NavLink to='/dashboard/contentManagement'><MdManageSearch className="text-2xl"></MdManageSearch>Content Management</NavLink></li>
                         </>
                     }
 

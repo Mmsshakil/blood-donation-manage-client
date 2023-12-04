@@ -4,17 +4,21 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const AllDonationRequests = () => {
 
     const axiosSecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
     const [userData, setUserData] = useState();
+    const axiosPublic = useAxiosPublic();
+    const done = "done";
+    const cancel = "canceled";
     // console.log(user);
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -85,6 +89,32 @@ const AllDonationRequests = () => {
         });
     }
 
+    // update donation status done or cancel
+    const handleStatus = (id, status) => {
+        console.log(id);
+        const updateInfo = {
+            donationStatus: status
+        }
+
+        axiosPublic.put(`/statusUpdate/${id}`, updateInfo)
+            .then(res => {
+                console.log('request status updated to the data base', res);
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Donation Request Done Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    window.location.reload();
+
+                }
+            })
+
+    }
+
+
 
 
 
@@ -101,10 +131,11 @@ const AllDonationRequests = () => {
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
+                        <th>Cancel / Done</th>
                         <th>Donar Info</th>
                         {
                             userData?.role === "volunteer" ? <>
-                                <th>Update Status</th>
+
                             </> : <>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -123,13 +154,28 @@ const AllDonationRequests = () => {
                             <td>{request.date}</td>
                             <td>{request.time}</td>
                             <td>{request.donationStatus}</td>
-                            <td>{request.donarName} <br /> {request.donarEmail}</td>
+                            {
+                                request?.donationStatus === "inprogress" ? <>
+                                    <td> <div className="flex flex-col gap-1 items-center">
+                                        <button onClick={() => handleStatus(request._id, done)} className="btn btn-sm btn-success">Done</button>
+                                        <button onClick={() => handleStatus(request._id, cancel)} className="btn btn-sm btn-error">Cancel</button>
+                                    </div> </td>
+                                </> : <>
+                                    <td>. . . . .</td>
+                                </>
+                            }
+
+                            {
+                                request?.donationStatus === "inprogress" ? <>
+                                    <td>{request.donarName} <br /> {request.donarEmail}</td>
+                                </> : <>
+                                    <td>. . . . .</td>
+                                </>
+                            }
 
                             {
                                 userData?.role === "volunteer" ? <>
-                                    <td>
-                                        <button className="btn">Update</button>
-                                    </td>
+
                                 </> : <>
                                     <td>
                                         <NavLink to={`/dashboard/updateDonationRequest/${request._id}`}><button className="btn btn-outline btn-warning">Edit</button></NavLink>

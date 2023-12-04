@@ -29,6 +29,16 @@ const Login = () => {
                 });
                 navigate(from, { replace: true });
             })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Invalid Mail or Password",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
 
     };
 

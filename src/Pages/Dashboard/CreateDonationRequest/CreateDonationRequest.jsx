@@ -15,6 +15,7 @@ const CreateDonationRequest = () => {
     // console.log(districts);
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic();
+    
 
     // ----------------------------------------------
     const [userData, setUserData] = useState();
@@ -22,7 +23,7 @@ const CreateDonationRequest = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

@@ -30,7 +30,9 @@ const Registration = () => {
     // console.log(img_hosting_api);
 
     // ----------------------------------------------------------
+
     const { register, handleSubmit } = useForm();
+
 
 
     const onSubmit = async (data) => {
@@ -96,6 +98,7 @@ const Registration = () => {
                                             showConfirmButton: false,
                                             timer: 1500
                                         });
+                                        navigate(location?.state ? location.state : '/');
                                         // window.location.reload();
                                     }
                                 })
@@ -229,6 +232,7 @@ const Registration = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input {...register("password")} type="password" placeholder="Password" className="input input-bordered w-full" required />
+
                             </div>
 
                             {/* confirm password */}
@@ -236,6 +240,7 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
+
                                 <input {...register("confirmPass")} type="password" placeholder="Confirm password" className="input input-bordered w-full" required />
                             </div>
                         </div>

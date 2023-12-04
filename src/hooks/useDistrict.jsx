@@ -7,7 +7,7 @@ const useDistrict = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/districts')
+        fetch('https://blood-donor-manage-server.vercel.app/districts')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

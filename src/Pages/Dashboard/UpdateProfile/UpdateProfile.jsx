@@ -5,6 +5,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
 
@@ -12,6 +13,8 @@ const UpdateProfile = () => {
     const [upazilas] = useUpazila();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     // --------------------------------------------------------------
     // ---------get current user data and set  as default value-------
@@ -22,7 +25,7 @@ const UpdateProfile = () => {
 
     useEffect(() => {
         // Make sure to use the correct parameter name in the fetch URL
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://blood-donor-manage-server.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -87,6 +90,7 @@ const UpdateProfile = () => {
                             timer: 1500
                         });
                         // window.location.reload();
+                        navigate(location?.state ? location.state : '/dashboard/profile');
                     }
                 })
 
