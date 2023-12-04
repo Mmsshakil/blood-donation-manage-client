@@ -3,16 +3,35 @@ import { NavLink } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 
 
 const ContentManagement = () => {
 
-    const axiosPublic = useAxiosPublic();
+    const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const published = "published";
     const draft = "draft";
+
+
+    const [userData, setUserData] = useState();
+
+
+    useEffect(() => {
+        // Make sure to use the correct parameter name in the fetch URL
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setUserData(data);
+
+            })
+    }, [user.email, setUserData]);
+
+    console.log(userData);
 
 
 
@@ -110,14 +129,21 @@ const ContentManagement = () => {
                             <h2 className="card-title mx-auto">{blog.title}</h2>
                             <div className="card-actions justify-center">
                                 {
-                                    blog?.blogStatus === 'published' ? <>
-                                        <button onClick={() => handlePublishStatus(blog._id, draft)} className="btn btn-primary">Unpublish</button>
+                                    userData?.role === 'admin' ? <>
+
+                                        {
+                                            blog?.blogStatus === 'published' ? <>
+                                                <button onClick={() => handlePublishStatus(blog._id, draft)} className="btn btn-primary">Unpublish</button>
+                                            </> : <>
+                                                <button onClick={() => handlePublishStatus(blog._id, published)} className="btn btn-primary">Publish</button>
+                                            </>
+                                        }
+                                        <button onClick={() => handleDelete(blog._id, draft)} className="btn btn-primary">Delete</button>
                                     </> : <>
-                                        <button onClick={() => handlePublishStatus(blog._id, published)} className="btn btn-primary">Publish</button>
+                                        <button className="btn text-red-700" disabled>This Blog on {blog.blogStatus}</button>
                                     </>
                                 }
 
-                                <button onClick={() => handleDelete(blog._id, draft)} className="btn btn-primary">Delete</button>
                             </div>
                         </div>
                     </div>)
