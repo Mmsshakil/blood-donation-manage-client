@@ -21,6 +21,7 @@ import Welcome from "../Pages/Dashboard/Welcome/Welcome";
 import ContentManagement from "../Pages/Dashboard/ContentManagement/ContentManagement";
 import AddBlog from "../Pages/Dashboard/AddBlog/AddBlog";
 import Blogs from "../Pages/Blogs/Blogs";
+import Funding from "../Pages/Funding/Funding";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: 'blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: 'funding',
+                element: <PrivateRoute><Funding></Funding></PrivateRoute>
             }
         ]
     },

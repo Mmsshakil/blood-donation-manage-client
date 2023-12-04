@@ -44,7 +44,7 @@ const Navbar = () => {
         {
             user ? <>
                 <li><NavLink to='/dashboard/welcome'>Dashboard</NavLink></li>
-                <li><NavLink>Fundings</NavLink></li>
+                <li><NavLink to='/funding'>Fundings</NavLink></li>
             </> : <>
                 <li><NavLink to='/registration'>Registration</NavLink></li>
             </>
