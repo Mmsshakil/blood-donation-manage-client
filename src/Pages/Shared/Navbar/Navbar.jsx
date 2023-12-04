@@ -38,8 +38,9 @@ const Navbar = () => {
     }
 
     const navOptions = <>
+        <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/donationRequests'>Donation Requests</NavLink></li>
-        <li><NavLink>Blog</NavLink></li>
+        <li><NavLink to='/blogs'>Blog</NavLink></li>
         {
             user ? <>
                 <li><NavLink to='/dashboard/welcome'>Dashboard</NavLink></li>

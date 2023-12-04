@@ -9,7 +9,7 @@ const Banner = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className=" flex flex-col lg:flex-row gap-20">
                     <div className="max-w-md p-10 bg-opacity-40 bg-slate-500 rounded-md" >
-                        <h1 className="mb-5 text-5xl font-bold text-black">Donate blood, <br /> Save lives</h1>
+                        <h1 className="mb-5 text-5xl font-bold text-black">Donate <span className="text-red-600">blood,</span><br /> Save <span className="text-green-500">lives</span></h1>
                         <p className="mb-5 text-white">Blood donation saves lives by providing a vital lifeline for those in need, embodying the simple yet profound act of compassion and generosity.</p>
                     </div>
                     <div className="flex gap-3 justify-center items-center">

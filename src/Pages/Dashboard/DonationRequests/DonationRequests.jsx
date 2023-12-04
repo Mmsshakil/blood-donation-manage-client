@@ -34,40 +34,44 @@ const DonationRequests = () => {
 
 
     return (
-        <div className="overflow-x-auto">
-            <table className="table w-full">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Recipient Name</th>
-                        <th>Recipient Location</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {
-                        requests.filter(request => request.donationStatus === 'pending').map((request, index) => <tr key={request._id}>
-                            <th>{index + 1}</th>
-                            <td>{request.recipientName}</td>
-                            <td>{request.upazila}, {request.district}</td>
-                            <td>{request.date}</td>
-                            <td>{request.time}</td>
-                            <td>{request.donationStatus}</td>
-                            <td>
-                                <NavLink to={`/dashboard/viewDonationDetails/${request._id}`}><button className="btn btn-outline btn-info">View</button></NavLink>
-                            </td>
+        <div className="my-10">
+            <div className="divider divider-info text-2xl font-bold ">Donation Requests</div>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Recipient Name</th>
+                            <th>Recipient Location</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>View</th>
                         </tr>
-                        )
-                    }
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+                        {
+                            requests.filter(request => request.donationStatus === 'pending').map((request, index) => <tr key={request._id}>
+                                <th>{index + 1}</th>
+                                <td>{request.recipientName}</td>
+                                <td>{request.upazila}, {request.district}</td>
+                                <td>{request.date}</td>
+                                <td>{request.time}</td>
+                                <td>{request.donationStatus}</td>
+                                <td>
+                                    <NavLink to={`/dashboard/viewDonationDetails/${request._id}`}><button className="btn btn-outline btn-info">View</button></NavLink>
+                                </td>
+                            </tr>
+                            )
+                        }
+                    </tbody>
+
+                </table>
+            </div>
         </div>
+
     );
 };
 

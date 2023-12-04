@@ -20,6 +20,7 @@ import DonationRequests from "../Pages/Dashboard/DonationRequests/DonationReques
 import Welcome from "../Pages/Dashboard/Welcome/Welcome";
 import ContentManagement from "../Pages/Dashboard/ContentManagement/ContentManagement";
 import AddBlog from "../Pages/Dashboard/AddBlog/AddBlog";
+import Blogs from "../Pages/Blogs/Blogs";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: 'donationRequests',
                 element: <DonationRequests></DonationRequests>
+            },
+            {
+                path: 'blogs',
+                element: <Blogs></Blogs>
             }
         ]
     },
@@ -64,6 +69,7 @@ export const router = createBrowserRouter([
                 path: 'updateProfile/:id',
                 element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
             },
+
 
             // admin routes
             {
