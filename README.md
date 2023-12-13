@@ -1,4 +1,4 @@
-# No need to worry; the blood bank is now available on our website.
+# No need to worry; the blood bank is now available on your hand.
 
 # features of my website
 1. Here, you can view all pending blood donation requests.
